@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineMood — Pick a Mood, Get a Film | AI Movie Recommendation Engine</title>
+  <meta name="description" content="Discover 300+ movies tailored to your exact mood. Filter by free streaming platforms (Tubi, Pluto TV, Freevee) or premium services (Netflix, Prime, Max). Interactive 3D cards, trailers & AI recommendations.">
+  <meta name="theme-color" content="#0a0a0f">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+</head>
+<body>
+
+  <!-- Ambient Dynamic Lighting Background Orbs -->
+  <div class="ambient-glow">
+    <div class="glow-orb-1" id="glowOrb1"></div>
+    <div class="glow-orb-2"></div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="app-header">
+    <div class="nav-container">
+      <div class="logo-group" id="logoBtn">
+        <div class="logo-icon">🎬</div>
+        <div>
+          <div class="logo-title">CineMood</div>
+          <div class="logo-tagline">Pick a mood. Get a film.</div>
+        </div>
+      </div>
+      
+      <div class="nav-actions">
+        <button class="btn-contact-nav" id="btnContactNav" title="Contact Customer Support">
+          <span>✉️ Contact Support</span>
+        </button>
+        <button class="btn-watchlist" id="btnWatchlist" title="View Saved Movies">
+          <span>❤️ Watchlist</span>
+          <span class="watchlist-count" id="watchlistCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="main-content">
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-badge">
+        <span class="hero-badge-sparkle">✨</span> AI-Powered Cinema Matcher
+      </div>
+      <h1 class="hero-title">
+        How are you feeling <span>right now?</span>
+      </h1>
+      <p class="hero-subtitle">
+        Pick a mood preset below or describe your vibe to instantly discover top-rated films, where to watch them for free or premium, and custom AI recommendations.
+      </p>
+
+      <!-- AI Custom Vibe Box -->
+      <div class="vibe-input-wrapper">
+        <span class="vibe-icon">🪄</span>
+        <input type="text" id="vibeInput" class="vibe-input-box" placeholder="Or type your vibe... e.g. 'rainy Sunday afternoon horror with popcorn' or 'heartwarming 90s comfort movie'" autocomplete="off">
+        <button class="vibe-clear-btn" id="vibeClearBtn" style="display: none;" title="Clear input">✕</button>
+      </div>
+
+      <!-- Mood Preset Chips Matrix -->
+      <div class="mood-chips-container" id="moodChipsContainer">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- Controls & Filters Bar -->
+    <section class="controls-section">
+      <div class="controls-left">
+        <!-- Free Movies Only Toggle -->
+        <label class="toggle-free-label" title="Show movies available on free streaming platforms like Tubi, Pluto TV, YouTube, Freevee">
+          <input type="checkbox" id="toggleFree">
+          <span class="custom-checkbox"></span>
+          <span>🎁 Free to Watch Only</span>
+        </label>
+
+        <!-- Sort Selector -->
+        <div class="sort-group">
+          <span class="sort-label">Sort by:</span>
+          <select id="sortSelect" class="sort-select">
+            <option value="matchScore">🎯 Best Mood Match</option>
+            <option value="rating">⭐ Highest Rating (IMDb)</option>
+            <option value="year">📅 Release Year (Newest)</option>
+            <option value="title">🔤 Title (A-Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Surprise Me / Roulette Button -->
+      <button class="btn-roulette" id="btnRoulette" title="Can't decide? Let the Mood Roulette spin a film for you!">
+        <span class="dice-icon">🎲</span> Spin Mood Roulette
+      </button>
+    </section>
+
+    <!-- Results Header -->
+    <div class="results-header">
+      <h2 class="results-title" id="currentMoodTitle">
+        🍿 Recommended Films
+      </h2>
+      <span class="results-count-badge" id="resultsCount">0 films</span>
+    </div>
+
+    <!-- Movie Cards Grid -->
+    <section class="movies-grid" id="moviesGrid">
+      <!-- Rendered dynamically by app.js with 60fps 3D tilt -->
+    </section>
+
+    <!-- Empty State View -->
+    <div class="empty-state" id="emptyState" style="display: none;">
+      <div class="empty-icon">🛸</div>
+      <h3 class="empty-title">No Movies Found</h3>
+      <p class="empty-text">We couldn't find any films matching that specific combination. Try switching moods or clearing filters!</p>
+    </div>
+  </main>
+
+  <!-- Website Footer with Support Email & Help Center -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-title">CineMood</div>
+        <p class="footer-text">Helping movie lovers discover the perfect film tailored to their exact mood.</p>
+      </div>
+
+      <div class="footer-contact-box">
+        <h4>💬 Customer Support & Feedback</h4>
+        <p>Having any issues, movie suggestions, or questions? Contact us directly:</p>
+        <a href="mailto:manneshivasai2434@gmail.com" class="support-email-link" id="footerSupportEmail">
+          ✉️ <span id="displaySupportEmail">manneshivasai2434@gmail.com</span>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 CineMood. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Contact Support Modal -->
+  <div class="modal-overlay" id="contactModal">
+    <div class="modal-container" style="max-width: 600px;">
+      <button class="btn-close-modal" id="btnCloseContactModal" title="Close modal">✕</button>
+      <div class="modal-body" style="padding: 2.5rem 2rem;">
+        <h2 style="font-family: var(--font-primary); font-size: 2rem; margin-bottom: 0.5rem; color: #fff;">✉️ Customer Support</h2>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Have questions, feature requests, or experiencing an issue? Send us a message or email us directly!</p>
+
+        <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid var(--theme-color); padding: 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+          <div style="font-weight: 700; font-size: 0.95rem; color: #fff; margin-bottom: 0.3rem;">Direct Support Email:</div>
+          <a href="mailto:manneshivasai2434@gmail.com" id="modalSupportEmailLink" style="color: var(--theme-color); font-weight: 700; font-size: 1.1rem; text-decoration: underline;">
+            manneshivasai2434@gmail.com
+          </a>
+        </div>
+
+        <form id="contactForm" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent to customer support.');">
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.4rem;">Your Name</label>
+            <input type="text" placeholder="John Doe" required style="width: 100%; background: rgba(0,0,0,0.4); border: 1px solid var(--border-glass); padding: 0.75rem 1rem; border-radius: var(--radius-sm); color: #fff; outline: none;">
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.4rem;">Your Email Address</label>
+            <input type="email" placeholder="customer@example.com" required style="width: 100%; background: rgba(0,0,0,0.4); border: 1px solid var(--border-glass); padding: 0.75rem 1rem; border-radius: var(--radius-sm); color: #fff; outline: none;">
+          </div>
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.4rem;">How can we help you?</label>
+            <textarea rows="4" placeholder="Describe your issue or suggestion..." required style="width: 100%; background: rgba(0,0,0,0.4); border: 1px solid var(--border-glass); padding: 0.75rem 1rem; border-radius: var(--radius-sm); color: #fff; outline: none; resize: vertical;"></textarea>
+          </div>
+          <button type="submit" style="width: 100%; background: var(--theme-color); color: #fff; border: none; padding: 0.9rem; border-radius: var(--radius-full); font-family: var(--font-primary); font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 15px var(--theme-glow);">
+            🚀 Send Message to Support
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Expanded Deep-Dive Detail Drawer / Modal -->
+  <div class="modal-overlay" id="movieModal">
+    <div class="modal-container">
+      <button class="btn-close-modal" id="btnCloseModal" title="Close details">✕</button>
+      <div id="modalContent">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/moviesData.js"></script>
+  <script src="js/moodEngine.js"></script>
+  <script src="js/tiltEffect.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
