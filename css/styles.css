@@ -1008,3 +1008,272 @@ body {
     grid-template-columns: 1fr;
   }
 }
+/* =========================================================
+   MOVIE DETAIL MODAL CONTENT
+   ========================================================= */
+
+.modal-banner-sleek {
+  padding: 2rem 2rem 1.5rem;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 51, 102, 0.18),
+      rgba(99, 102, 241, 0.08)
+    );
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.modal-header-info-sleek {
+  padding-right: 3rem;
+}
+
+.modal-sleek-title {
+  font-family: var(--font-primary);
+  color: var(--text-main);
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 0.8rem;
+}
+
+.modal-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+
+.modal-meta-row span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.modal-body {
+  padding: 1.75rem 2rem 2rem;
+  color: var(--text-main);
+  font-family: var(--font-body);
+}
+
+.modal-section-title {
+  color: var(--text-main);
+  font-family: var(--font-primary);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-body p {
+  line-height: 1.7;
+}
+
+.plot-summary {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+
+/* AI Recommendation */
+
+.ai-recommendation-box {
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+  background: rgba(255, 51, 102, 0.07);
+  border: 1px solid rgba(255, 51, 102, 0.25);
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 25px rgba(255, 51, 102, 0.08);
+}
+
+.ai-recommendation-box p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+/* Streaming providers */
+
+.streaming-providers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.8rem;
+}
+
+.provider-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  text-decoration: none;
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  transition: all 0.25s ease;
+}
+
+.provider-card:hover {
+  border-color: var(--theme-color);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--theme-glow);
+}
+
+.provider-left {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.provider-logo {
+  font-size: 1.6rem;
+}
+
+.provider-name {
+  font-family: var(--font-primary);
+  font-weight: 700;
+}
+
+.provider-type {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  margin-top: 0.15rem;
+}
+
+.provider-tag-free,
+.provider-tag-premium {
+  white-space: nowrap;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.provider-tag-free {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.provider-tag-premium {
+  background: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+/* Vibe meter */
+
+.vibe-meter-box {
+  margin: 2rem 0;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+}
+
+.vibe-bar-item {
+  margin-top: 1rem;
+}
+
+.vibe-bar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+  color: #cbd5e1;
+  font-size: 0.85rem;
+}
+
+.vibe-track {
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+}
+
+.vibe-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--theme-color),
+    #8b5cf6
+  );
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 12px var(--theme-glow);
+}
+
+/* Trailer */
+
+.trailer-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 0.75rem;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+}
+
+.trailer-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Watchlist button inside modal */
+
+.modal-body .btn-watchlist {
+  width: 100%;
+  border: 1px solid var(--theme-color);
+  background: var(--theme-color);
+  color: white;
+  border-radius: var(--radius-full);
+  font-family: var(--font-primary);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.modal-body .btn-watchlist:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--theme-glow);
+}
+
+/* Mobile modal */
+
+@media (max-width: 600px) {
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+
+  .modal-container {
+    max-height: 95vh;
+    border-radius: var(--radius-md);
+  }
+
+  .modal-banner-sleek {
+    padding: 1.5rem 1rem 1.25rem;
+  }
+
+  .modal-body {
+    padding: 1.25rem 1rem 1.5rem;
+  }
+
+  .modal-sleek-title {
+    font-size: 1.7rem;
+  }
+
+  .modal-meta-row {
+    font-size: 0.78rem;
+    gap: 0.4rem 0.7rem;
+  }
+
+  .streaming-providers-grid {
+    grid-template-columns: 1fr;
+  }
+}
